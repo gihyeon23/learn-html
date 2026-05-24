@@ -13,6 +13,35 @@ Trainer 1 ─── N Pokemon
 ```
 <img width="1192" height="792" alt="image" src="https://github.com/user-attachments/assets/2c64e3b4-1b49-4c3d-b7ff-09cbdb00d299" />
 
+# API 명세
+
+### Trainer API
+
+| 기능 | 메서드 | URI | 요청 DTO | 응답 DTO | 상태 코드 |
+|---|---|---|---|---|---|
+| 트레이너 등록 | POST | `/api/trainer` | `TrainerRequestDto` | `TrainerResponseDto` | `200 OK` |
+| 트레이너 단건 조회 | GET | `/api/trainer/{id}` | 없음 | `TrainerSearchResponseDto` | `200 OK` |
+| 트레이너 전체 조회 | GET | `/api/trainer` | 없음 | `List<TrainerSearchResponseDto>` | `200 OK` |
+| 트레이너 삭제 | DELETE | `/api/trainer/{id}` | 없음 | 없음 또는 문자열 | `200 OK` |
+
+---
+
+### Pokemon API
+
+| 기능 | 메서드 | URI | 요청 DTO | 응답 DTO | 상태 코드 |
+|---|---|---|---|---|---|
+| 포켓몬 등록 | POST | `/api/pokemon` | `PokemonRequestDto` | `PokemonResponseDto` | `200 OK` |
+| 포켓몬 단건 조회 | GET | `/api/pokemon/{id}` | 없음 | `PokemonSearchResponseDto` | `200 OK` |
+| 포켓몬 전체 조회 | GET | `/api/pokemon` | 없음 | `List<PokemonSearchResponseDto>` | `200 OK` |
+| 포켓몬 삭제 | DELETE | `/api/pokemon/{id}` | 없음 | 없음 또는 문자열 | `200 OK` |
+| 포켓몬 포획 | PATCH | `/api/pokemon/{pokemonId}/{trainerId}` | 없음 | `PokemonCatchResponseDto` | `200 OK` |
+
+## PostMan 사용
+<img width="1209" height="758" alt="image" src="https://github.com/user-attachments/assets/abe1a154-e463-4237-af99-4ef34c47bba7" />
+포켓몬을 잡았기 때문에 trainerId에 값이 들어갔다. 처음에는 NULL이었음, 즉  리자몽은 트레이너 1에게 잡힌 것 이다.
+
+---
+
 ### 강의에서 배우 내용 중  이번에 직접 써본 것 3가지
 1. HTTP강의에서 API URL은 행위가 아니라 리소스를 기준으로 만들어야 한다고 배웠다. 그래서 트레이너 관련 기능은  `@RequestMapping(”/api/trainer”)` , 포켓몬 관련 기능은 `@RequestMapping("/api/pokemon")` 와 같이 공통 URL을 리소스 기준으로 분리하였다.
 2. 트레이너 등록 API는 클라이언트로부터 이름, 성별, 나이와 같은 데이터를 JSON 형식으로 전달받아야한다. 이때 요청 Body에 들어온 Json를 알맞는 형식으로 반환하기 위해`@RequestBody TrainerRequestDto request` 를 사용하였다.
