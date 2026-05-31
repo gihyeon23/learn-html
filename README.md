@@ -43,7 +43,7 @@ Trainer 1 ─── N Pokemon
 
 ---
 
-### 강의에서 배우 내용 중  이번에 직접 써본 것 3가지
+### 강의에서 배운 내용 중  이번에 직접 써본 것 3가지
 1. HTTP강의에서 API URL은 행위가 아니라 리소스를 기준으로 만들어야 한다고 배웠다. 그래서 트레이너 관련 기능은  `@RequestMapping(”/api/trainer”)` , 포켓몬 관련 기능은 `@RequestMapping("/api/pokemon")` 와 같이 공통 URL을 리소스 기준으로 분리하였다.
 2. 트레이너 등록 API는 클라이언트로부터 이름, 성별, 나이와 같은 데이터를 JSON 형식으로 전달받아야한다. 이때 요청 Body에 들어온 Json를 알맞는 형식으로 반환하기 위해`@RequestBody TrainerRequestDto request` 를 사용하였다.
 3. 리포지토리를 사용할 때는 Spring Data JPA의 JpaRepository를 상속하면 save, findById, findAll, deleteById와 같은 기본 CRUD 메서드를 사용할 수 있다.
