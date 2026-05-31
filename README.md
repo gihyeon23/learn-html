@@ -17,12 +17,6 @@ Trainer 1 ─── N Pokemon
 
 ### Trainer API
 
-# API 명세
-
-# API 명세
-
-### Trainer API
-
 | 기능 | 메서드 | URI | 요청 DTO | 응답 DTO | 상태 코드 |
 |---|---|---|---|---|---|
 | 트레이너 등록 | POST | `/api/trainer` | `TrainerRequestDto` | `TrainerResponseDto` | `200 OK` |
