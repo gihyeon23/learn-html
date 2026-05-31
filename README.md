@@ -15,26 +15,27 @@ Trainer 1 ─── N Pokemon
 
 # API 명세
 
-### Trainer API
+| 구분      | 기능        | Method   | URI                                    | Request                                                                  | Response                                                                                                                                     | Status   |
+| ------- | --------- | -------- | -------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| Pokemon | 포켓몬 등록    | `POST`   | `/api/pokemon`                         | {<br>  "pokemonName" : "뮤츠",<br>  "type" : "에스퍼",<br>  "level" : 87<br>} | {<br>  "message" : "포켓몬 등록 완료"<br>}                                                                                                          | `200 OK` |
+| Pokemon | 포켓몬 전체 조회 | `GET`    | `/api/pokemon`                         | 없음                                                                       | [<br>  {<br>    "pokemonId" : 3,<br>    "trainerId" : 2,<br>    "pokemonName" : "뮤츠",<br>    "type" : "에스퍼",<br>    "level" : 87<br>  }<br>] | `200 OK` |
+| Pokemon | 포켓몬 단건 조회 | `GET`    | `/api/pokemon/{id}`                    | 없음                                                                       | {<br>  "pokemonId" : 3,<br>  "trainerId" : 2,<br>  "pokemonName" : "뮤츠",<br>  "type" : "에스퍼",<br>  "level" : 87<br>}                         | `200 OK` |
+| Pokemon | 포켓몬 삭제    | `DELETE` | `/api/pokemon/{id}`                    | 없음                                                                       | "포켓몬 삭제 완료"                                                                                                                                  | `200 OK` |
+| Pokemon | 포켓몬 포획    | `PATCH`  | `/api/pokemon/{pokemonId}/{trainerId}` | 없음                                                                       | {<br>  "pokemonName" : "뮤츠",<br>  "trainerName" : "유기현"<br>}                                                                                 | `200 OK` |
 
-| 기능 | 메서드 | URI | 요청 DTO | 응답 DTO | 상태 코드 |
-|---|---|---|---|---|---|
-| 트레이너 등록 | POST | `/api/trainer` | `TrainerRequestDto` | `TrainerResponseDto` | `200 OK` |
-| 트레이너 단건 조회 | GET | `/api/trainer/{id}` | 없음 | `TrainerSearchResponseDto` | `200 OK` |
-| 트레이너 전체 조회 | GET | `/api/trainer` | 없음 | `List<TrainerSearchResponseDto>` | `200 OK` |
-| 트레이너 삭제 | DELETE | `/api/trainer/{id}` | 없음 | 없음 또는 문자열 | `200 OK` |
 
----
+| 구분      | 기능         | Method   | URI                                    | Request                                                                  | Response                                                                                                                                        | Status   |
+| ------- | ---------- | -------- | -------------------------------------- | ------------------------------------------------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- | -------- |
+| Trainer | 트레이너 등록    | `POST`   | `/api/trainer`                         | {<br>  "trainerName" : "유기현",<br>  "gender" : "남성",<br>  "age" : 22<br>} | {<br>  "message" : "트레이너가 등장했다."<br>}                                                                                                           | `200 OK` |
+| Trainer | 트레이너 전체 조회 | `GET`    | `/api/trainer`                         | 없음                                                                       | [<br>  {<br>    "trainerId" : 1,<br>    "trainerName" : "유기현",<br>    "gender" : "남성",<br>    "age" : 22<br>  }<br>]                            | `200 OK` |
+| Trainer | 트레이너 단건 조회 | `GET`    | `/api/trainer/{id}`                    | 없음                                                                       | {<br>  "trainerId" : 1,<br>  "trainerName" : "유기현",<br>  "gender" : "남성",<br>  "age" : 22<br>}                                                  | `200 OK` |
+| Trainer | 트레이너 삭제    | `DELETE` | `/api/trainer/{id}`                    | 없음                                                                       | "트레이너 삭제 완료"                                                                                                                                    | `200 OK` |
+| Pokemon | 포켓몬 등록     | `POST`   | `/api/pokemon`                         | {<br>  "pokemonName" : "뮤츠",<br>  "type" : "에스터",<br>  "level" : 87<br>} | {<br>  "message" : "포켓몬이 나타났다."<br>}                                                                                                            | `200 OK` |
+| Pokemon | 포켓몬 전체 조회  | `GET`    | `/api/pokemon`                         | 없음                                                                       | [<br>  {<br>    "pokemonId" : 1,<br>    "trainerId" : null,<br>    "pokemonName" : "뮤츠",<br>    "type" : "에스터",<br>    "level" : 87<br>  }<br>] | `200 OK` |
+| Pokemon | 포켓몬 단건 조회  | `GET`    | `/api/pokemon/{id}`                    | 없음                                                                       | {<br>  "pokemonId" : 1,<br>  "trainerId" : null,<br>  "pokemonName" : "뮤츠",<br>  "type" : "에스터",<br>  "level" : 87<br>}                         | `200 OK` |
+| Pokemon | 포켓몬 삭제     | `DELETE` | `/api/pokemon/{id}`                    | 없음                                                                       | "포켓몬 삭제 완료"                                                                                                                                     | `200 OK` |
+| Pokemon | 포켓몬 포획     | `PATCH`  | `/api/pokemon/{pokemonId}/{trainerId}` | 없음                                                                       | {<br>  "pokemonName" : "뮤츠",<br>  "trainerName" : "유기현"<br>}                                                                                    | `200 OK` |
 
-### Pokemon API
-
-| 기능 | 메서드 | URI | 요청 DTO | 응답 DTO | 상태 코드 |
-|---|---|---|---|---|---|
-| 포켓몬 등록 | POST | `/api/pokemon` | `PokemonRequestDto` | `PokemonResponseDto` | `200 OK` |
-| 포켓몬 단건 조회 | GET | `/api/pokemon/{id}` | 없음 | `PokemonSearchResponseDto` | `200 OK` |
-| 포켓몬 전체 조회 | GET | `/api/pokemon` | 없음 | `List<PokemonSearchResponseDto>` | `200 OK` |
-| 포켓몬 삭제 | DELETE | `/api/pokemon/{id}` | 없음 | 없음 또는 문자열 | `200 OK` |
-| 포켓몬 포획 | PATCH | `/api/pokemon/{pokemonId}/{trainerId}` | 없음 | `PokemonCatchResponseDto` | `200 OK` |
 
 ## PostMan 사용
 <img width="1209" height="758" alt="image" src="https://github.com/user-attachments/assets/abe1a154-e463-4237-af99-4ef34c47bba7" />
